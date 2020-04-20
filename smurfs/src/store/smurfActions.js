@@ -6,11 +6,14 @@ export function getSmurfs() {
     dispatch({ type: act.FETCH_SMURFS_START });
     axios
       .get('http://localhost:3333/smurfs')
-      .then((response) => {
+      .then((res) => {
+        dispatch({
+          type: act.FETCH_SMURFS_RECEIVED,
+          payload: res.data,
+        });
         dispatch({ type: act.FETCH_SMURFS_FINISH });
-        dispatch({ type: act.FETCH_SMURFS_RECEIVED, payload: response });
       })
-      .catch((error) => {
+      .catch((err) => {
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       });
   };
@@ -21,29 +24,36 @@ export function postSmurf(data) {
     dispatch({ type: act.FETCH_SMURFS_START });
     axios
       .post('http://localhost:3333/smurfs', data)
-      .then((response) => {
+      .then((res) => {
         dispatch({
           type: act.FETCH_SMURFS_RECEIVED,
-          payload: response,
+          payload: res.data,
         });
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       })
-      .catch((error) => {
+      .catch((err) => {
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       });
   };
 }
 
-function deleteSmurf() {
+export function deleteSmurf(id) {
+  console.log('deleting...');
+
   return (dispatch) => {
     dispatch({ type: act.FETCH_SMURFS_START });
     axios
       .delete(`http://localhost:3333/smurfs/${id}`)
-      .then((response) => {
-        dispatch({ type: act.FETCH_SMURFS_RECEIVED, payload: response });
+      .then((res) => {
+        console.log('result:', res);
+        dispatch({
+          type: act.FETCH_SMURFS_RECEIVED,
+          payload: res.data,
+        });
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       })
-      .catch((error) => {
+      .catch((err) => {
+        console.log('error:', err);
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       });
   };

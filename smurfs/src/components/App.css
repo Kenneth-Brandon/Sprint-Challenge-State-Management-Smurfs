@@ -21,3 +21,17 @@
   width: 50%;
   max-width: 200px;
 }
+
+.smurf-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.smurf-item {
+  width: 300px;
+  margin: 12px 0;
+  padding: 8px 8px;
+  border: 1px solid #ffffff;
+}
