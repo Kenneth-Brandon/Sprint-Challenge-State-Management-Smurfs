@@ -16,7 +16,7 @@ function SmurfList(props) {
           <SmurfItem
             key={item.id}
             smurf={item}
-            delete={() => deleteSmurf(item.id)}
+            delete={() => props.deleteSmurf(item.id)}
           />
         );
       })}
