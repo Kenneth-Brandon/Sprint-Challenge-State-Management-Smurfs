@@ -1,0 +1,7 @@
+// Application Actions
+
+export const FETCH_SMURFS_START = 'FETCH_SETS_START';
+export const FETCH_SMURFS_FINISH = 'FETCH_SETS_FINISH';
+
+export const FETCH_SMURFS_RECEIVED = 'FETCH_SETS_RECEIVED';
+export const FETCH_SMURFS_FAIL = 'FETCH_SETS_FAIL';
