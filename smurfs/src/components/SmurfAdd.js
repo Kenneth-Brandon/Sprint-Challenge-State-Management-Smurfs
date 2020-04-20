@@ -1,34 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+
 import { postSmurf } from '../store/smurfActions';
-import e from 'express';
 
 function SmurfAdd(props) {
-  function addSmurf(event) {
-    event.preventDefault();
+  const [name, setName] = useState('');
+  const [age, setAge] = useState(null);
+  const [height, setHeight] = useState('');
 
-    const data = new FormData(event.target);
-    props.postSmurf(data);
+  const [formData, setFormData] = useState({});
+
+  function addSmurf(e) {
+    e.preventDefault();
+    // const data = new FormData(e.target);
+    console.log('data: ', formData);
+    props.postSmurf(formData);
+  }
+
+  function formChangeHandler(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    // console.log(formData)
   }
 
   return (
-    <div>
-      <form className="add-item-form" onSubmit={addSmurf}>
+    <>
+      <form className="add-item-form" onSubmit={(e) => addSmurf(e)}>
         <label className="form-item">
-          Name:
-          <input name="name" type="text" />
+          Name
+          <input name="name" type="text" onChange={formChangeHandler} />
         </label>
         <label className="form-item">
-          Age:
-          <input name="age" type="text" />
+          Age
+          <input name="age" type="text" onChange={formChangeHandler} />
         </label>
         <label className="form-item">
-          Height:
-          <input name="height" type="text" />
+          Height
+          <input name="height" type="text" onChange={formChangeHandler} />
         </label>
         <button className="form-button">Add</button>
       </form>
-    </div>
+    </>
   );
 }
 
@@ -36,4 +50,6 @@ function mapToProps() {
   return {};
 }
 
-export default connect(mapToProps, { postSmurf })(SmurfAdd);
+export default connect(mapToProps, {
+  postSmurf,
+})(SmurfAdd);
