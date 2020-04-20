@@ -5,10 +5,12 @@ function SmurfItem(props) {
     <div className="smurf-item">
       <h3>{props.smurf.name}</h3>
       <p>
-        <span>{props.smurf.age} years old,</span>
+        <span>{props.smurf.age} yrs old,</span>
         <span>{props.smurf.height} tall</span>
       </p>
-      <button onClick={props.delete}>Delete</button>
+      <button className="form-button" onClick={props.delete}>
+        Delete
+      </button>
     </div>
   );
 }

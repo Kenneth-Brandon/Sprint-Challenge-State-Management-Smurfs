@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// State
+// STATE
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { smurfReducers } from './store/smurfReducers';
-// Middleware
+// MIDDLEWARE
 import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
-// Components
+// COMPONENTS
 import './index.css';
 import App from './components/App';
 

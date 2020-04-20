@@ -4,30 +4,30 @@ import { connect } from 'react-redux';
 import { postSmurf } from '../store/smurfActions';
 
 function SmurfAdd(props) {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState(null);
-  const [height, setHeight] = useState('');
+  // const [name, setName] = useState('');
+  // const [age, setAge] = useState(null);
+  // const [height, setHeight] = useState('');
 
   const [formData, setFormData] = useState({});
 
-  function addSmurf(e) {
-    e.preventDefault();
+  function addSmurf(event) {
+    event.preventDefault();
     // const data = new FormData(e.target);
     console.log('data: ', formData);
     props.postSmurf(formData);
   }
 
-  function formChangeHandler(e) {
+  function formChangeHandler(event) {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
     // console.log(formData)
   }
 
   return (
-    <>
-      <form className="add-item-form" onSubmit={(e) => addSmurf(e)}>
+    <div>
+      <form className="add-item-form" onSubmit={(event) => addSmurf(event)}>
         <label className="form-item">
           Name
           <input name="name" type="text" onChange={formChangeHandler} />
@@ -42,7 +42,7 @@ function SmurfAdd(props) {
         </label>
         <button className="form-button">Add</button>
       </form>
-    </>
+    </div>
   );
 }
 

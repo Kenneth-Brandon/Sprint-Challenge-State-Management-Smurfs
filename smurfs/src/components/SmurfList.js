@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Loader from 'react-loader-spinner';
 
 import { getSmurfs, deleteSmurf } from '../store/smurfActions';
+
 import SmurfItem from './SmurfItem';
+import Loader from 'react-loader-spinner';
 
 function SmurfList(props) {
   useEffect(() => {
@@ -18,9 +19,10 @@ function SmurfList(props) {
           color="#00BFFF"
           height={100}
           width={100}
-          timeout={3000}
+          timeout={3000} //3 secs
         />
       )}
+
       {props.smurfs &&
         props.smurfs.map((item) => {
           return (
@@ -42,4 +44,7 @@ function mapToProps(state) {
   };
 }
 
-export default connect(mapToProps, { getSmurfs, deleteSmurf })(SmurfList);
+export default connect(mapToProps, {
+  getSmurfs,
+  deleteSmurf,
+})(SmurfList);

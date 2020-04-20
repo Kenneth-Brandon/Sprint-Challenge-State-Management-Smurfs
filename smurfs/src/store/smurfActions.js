@@ -6,14 +6,15 @@ export function getSmurfs() {
     dispatch({ type: act.FETCH_SMURFS_START });
     axios
       .get('http://localhost:3333/smurfs')
-      .then((res) => {
+      .then((response) => {
         dispatch({ type: act.FETCH_SMURFS_FINISH });
         dispatch({
           type: act.FETCH_SMURFS_RECEIVED,
-          payload: res.data,
+          payload: response.data,
         });
       })
-      .catch((err) => {
+      .catch((error) => {
+        console.log('Problem GET', error);
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       });
   };
@@ -26,14 +27,15 @@ export function postSmurf(data) {
     dispatch({ type: act.FETCH_SMURFS_START });
     axios
       .post('http://localhost:3333/smurfs', data)
-      .then((res) => {
+      .then((response) => {
         dispatch({ type: act.FETCH_SMURFS_FINISH });
         dispatch({
           type: act.FETCH_SMURFS_RECEIVED,
-          payload: res.data,
+          payload: response.data,
         });
       })
-      .catch((err) => {
+      .catch((error) => {
+        console.log('Problem POST', error);
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       });
   };
@@ -46,15 +48,15 @@ export function deleteSmurf(id) {
     dispatch({ type: act.FETCH_SMURFS_START });
     axios
       .delete(`http://localhost:3333/smurfs/${id}`)
-      .then((res) => {
+      .then((response) => {
         dispatch({ type: act.FETCH_SMURFS_FINISH });
         dispatch({
           type: act.FETCH_SMURFS_RECEIVED,
-          payload: res.data,
+          payload: response.data,
         });
       })
-      .catch((err) => {
-        console.log('error:', err);
+      .catch((error) => {
+        console.log('Problem Delete', error);
         dispatch({ type: act.FETCH_SMURFS_FINISH });
       });
   };

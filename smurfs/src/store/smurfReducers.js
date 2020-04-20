@@ -12,11 +12,13 @@ export function smurfReducers(state = initialState, action) {
         ...state,
         isFetching: true,
       };
+
     case act.FETCH_SMURFS_FINISH:
       return {
         ...state,
         isFetching: false,
       };
+
     case act.FETCH_SMURFS_RECEIVED:
       return {
         ...state,
